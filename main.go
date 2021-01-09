@@ -3,6 +3,8 @@ package main
 import (
 	"net/http"
 	"io"
+	"os"
+	"fmt"
 	"html/template"
 	"github.com/labstack/echo"
 	"github.com/ymotongpoo/datemaki"
@@ -25,8 +27,12 @@ func main() {
 		return c.Render(http.StatusOK,"index",nil)
 	})
 	e.GET("/date", parseDate)
-    e.Logger.Fatal(e.Start(":1323"))
-}
+	port := os.Getenv("PORT")
+    if port == "" {
+        port = "8080"
+        e.Logger.Printf("Defaulting to port %s", port)
+    }
+    e.Logger.Fatal(e.Start(fmt.Sprintf(":%s", port)))}
 
 func parseDate(c echo.Context) error {
 	date, err := datemaki.Parse(c.QueryParam("value"))

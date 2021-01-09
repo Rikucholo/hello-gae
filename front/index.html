@@ -22,11 +22,9 @@
                 method: "GET",
                 dataType: "json"
             });
-            debugger;
             console.log(req);
             fetch(req).then(res => res.json())
                 .then(res => {
-                    console.log(res);
                     alert(res);
                 });
         })
