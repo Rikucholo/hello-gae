@@ -5,7 +5,6 @@
 <head>
     <meta charset="utf-8">
     <title>dateParse</title>
-    <script src="script.js"></script>
 </head>
 
 <body>
@@ -18,7 +17,7 @@
         const btn = document.getElementById('btn');
         btn.addEventListener('click', function() {
             const v = document.my.text.value;
-            const req = new Request(`/date?value=20211102`, {
+            const req = new Request(`/date?value=${v}`, {
                 method: "GET",
                 dataType: "json"
             });
