@@ -1,0 +1,37 @@
+{{define "index"}}
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="utf-8">
+    <title>dateParse</title>
+    <script src="script.js"></script>
+</head>
+
+<body>
+    <form name="my">
+        <label for="greetingto">日付wpにゅうりょくしてください: </label>
+        <input type="text" id="text" />
+        <button id="btn">送信</button>
+    </form>
+    <script>
+        const btn = document.getElementById('btn');
+        btn.addEventListener('click', function() {
+            const v = document.my.text.value;
+            const req = new Request(`/date?value=20211102`, {
+                method: "GET",
+                dataType: "json"
+            });
+            debugger;
+            console.log(req);
+            fetch(req).then(res => res.json())
+                .then(res => {
+                    console.log(res);
+                    alert(res);
+                });
+        })
+    </script>
+</body>
+
+</html>
+{{end}}
